@@ -101,6 +101,8 @@
         if (isset($_POST['total'])) {
             foreach($_SESSION['list'] as $item) {
                 $totalValue += $item['quantity'] * $item['price'];
+
+                $message = "Total cost calculated properly";
             }
         }
 
@@ -131,10 +133,10 @@
         <input type="text" name="name" id="name" value="<?php echo $name; ?>">
         <br>
         <label for="quantity">quantity:</label>
-        <input type="number" name="quantity" id="quantity" value="<?php echo $quantity; ?>">
+        <input type="number" name="quantity" id="quantity" min="0" value="<?php echo $quantity; ?>">
         <br>
         <label for="price">price:</label>
-        <input type="number" name="price" id="price" value="<?php echo $price; ?>">
+        <input type="number" name="price" id="price" min="0" value="<?php echo $price; ?>">
         <br>
         <input type="hidden" name="index">
         <input type="submit" name="add" value="Add">
