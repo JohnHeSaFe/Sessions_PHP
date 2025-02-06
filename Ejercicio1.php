@@ -26,6 +26,7 @@
             session_start();
             $_SESSION['name'] = "[No name]";
             $_SESSION['product'] = [];
+            $message = "Inventory restarted";
         }
 
         if (!empty($_POST['username'])) {
