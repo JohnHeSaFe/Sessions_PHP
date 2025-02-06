@@ -53,7 +53,7 @@
                     $_SESSION['product'][$product] -= $quantity;
                     $message = "Removed $quantity units to $product";
 
-                    if ($_SESSION['product'][$product] <= 0 || $quantity == 0) {
+                    if ($_SESSION['product'][$product] <= 0) {
                         if ($_SESSION['product'][$product] < 0) {
                             $error = "Quantity trying to remove to " . $product . " is greater than existent. Removing product instead";
                         } else {
