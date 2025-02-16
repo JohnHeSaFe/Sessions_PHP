@@ -31,7 +31,9 @@
 </html>
 
 <?php
-    session_start();
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
     if (!isset($_SESSION['array'])) {
         $_SESSION['array'] = array(10, 20, 30);

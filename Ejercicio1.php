@@ -7,7 +7,9 @@
 </head>
 
 <?php
-    session_start();
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
     if (!isset($_SESSION['name'])) {
         $_SESSION['name'] = "[No name]";
@@ -53,7 +55,7 @@
 
                     if ($_SESSION['product'][$product] <= 0) {
                         if ($_SESSION['product'][$product] < 0) {
-                            $error = "Quantity trying to remove to " . $product . " is greater than existent. Removing product instead";
+                            $error = "Quantity trying to remove from " . $product . " is greater than available. Removing product instead.";
                         } else {
                             $message = "Removed product $product";
                         }
@@ -70,7 +72,7 @@
 <body>
     <form method="post" action="">
         <h1>Supermarket management</h1>
-        <label for="">Worker name:</label>
+        <label for="username">Worker name:</label>
         <input type="text" name="username">
         <br>
 

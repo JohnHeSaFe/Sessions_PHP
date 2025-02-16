@@ -24,7 +24,9 @@
 </head>
 
 <?php
-    session_start();
+    if (!isset($_SESSION)) {
+        session_start();
+    }
 
     $error = "";    
     $message = "";
@@ -59,6 +61,7 @@
             foreach($_SESSION['list'] as $index => $item) {
                 if ($item['name'] == $name) {
                     $error = "Item already on list";
+                    break;
                 }
             }
 
@@ -89,6 +92,7 @@
                         $_SESSION['list'][$index]['price'] = (float) $_POST['price'];
     
                         $message = "Item updated properly";
+                        break;
                     }
                 }
             }
