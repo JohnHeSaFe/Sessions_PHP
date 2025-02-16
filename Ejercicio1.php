@@ -22,8 +22,6 @@
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if (isset($_POST['reset'])) {
             session_unset();
-            session_destroy();
-            session_start();
             $_SESSION['name'] = "[No name]";
             $_SESSION['product'] = [];
             $message = "Inventory restarted";
@@ -31,7 +29,7 @@
 
         if (!empty($_POST['username'])) {
             $_SESSION['name'] = htmlspecialchars($_POST['username']);
-            $message = "Updated usename to ". $_SESSION['name'] . "<br><br>";
+            $message = "Updated username to ". $_SESSION['name'] . "<br><br>";
         } 
         
         if (!empty($_POST['product']) && !empty($_POST['quantity'])) {

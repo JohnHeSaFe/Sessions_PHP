@@ -9,7 +9,7 @@
     <form method="post">
         <h1>Modify array saved in session</h1>
 
-        <label for="">Position to modify: </label>
+        <label for="position">Position to modify: </label>
         <select name="position" id="position">
             <option value="0">0</option>
             <option value="1">1</option>
@@ -17,8 +17,8 @@
         </select>
         <br><br>
 
-        <label for="">New value: </label>
-        <input type="number" name="value">
+        <label for="value">New value: </label>
+        <input type="number" name="value" id="value" value="0">
         <br><br>
 
         <input type="submit" name="modify" value="Modify">
@@ -31,9 +31,7 @@
 </html>
 
 <?php
-    if (!isset($_SESSION)) {
-        session_start();
-    }
+    session_start();
 
     if (!isset($_SESSION['array'])) {
         $_SESSION['array'] = array(10, 20, 30);
@@ -44,17 +42,14 @@
             $_SESSION['array'] = array(10, 20, 30);
         }
 
-        if (isset($_POST['modify']) && !empty($_POST['value'])) {
+        if (isset($_POST['modify']) && isset($_POST['value'])) {
             $position = (int) $_POST['position'];
             $value = (int) $_POST['value'];
             $_SESSION['array'][$position] = $value;
         }
     }
 
-    echo "Current array: ";
-    foreach ($_SESSION['array'] as $value) {
-        echo "$value" . ", ";
-    }
+    echo "Current array:" . implode(", ", $_SESSION['array']);
 
     if (isset($_POST['average'])) {
         $sum = array_sum($_SESSION['array']);

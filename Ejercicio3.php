@@ -102,7 +102,7 @@
             foreach($_SESSION['list'] as $item) {
                 $totalValue += $item['quantity'] * $item['price'];
 
-                $message = "Total cost calculated properly";
+                $message = "Total cost calculated";
             }
         }
 
